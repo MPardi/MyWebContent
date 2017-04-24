@@ -1,0 +1,596 @@
+<!--Set up this project using the new ideas he presented in the soln files in Assignment4 repository. 
+        Make a global current selected variable.
+        Make it so it's possible to rename an image.
+        Include JQuery
+            Add and remove classes, Other special features that JQuery allows.
+        
+-->
+
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width, maximum-scale=1.0">
+        
+        <script src='asyncReq.js'></script>
+        
+        <script src='https://code.jquery.com/jquery-3.2.0.min.js'> </script>
+        
+        <script src='jquery-2.2.1.min.js'> </script>
+        
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Raleway|Ranga" rel="stylesheet"> 
+        
+        <title>Assignment 6 - MongoDB Image Collection</title>
+        
+        <script>
+            function addNew() {
+                var titlePrompt = prompt("Enter a title:", "Untitled");
+                
+                var imgUrl = prompt("Enter the URL:");
+                
+                var id = new Date().getTime();
+                
+                if(imgUrl.indexOf("http") >= 0 && imgUrl.length > 10) {
+                    var url = "./addGallery" + "?id=" + id + "&title=" + titlePrompt + "&url=" + imgUrl;
+                    
+                    loadFile(url, function(d) {
+                        formatGallery(JSON.parse(d));
+                    });
+                }
+                else {
+                    alert("You didn't enter a proper URL");
+                }
+            }
+            
+            function formatGallery(list) {
+                var markup = "";
+                //var eButton = <button id='editButton' onclick='editImage(" + list[i].id + ")'>Edit</button>;
+                
+                
+                if(list.length == 0) {
+                    markup = "<h3 id='markupText'>No Photos in the Gallery...</h3>";
+                    document.getElementById("galleryWrapper").innerHTML = markup;
+                    return;
+                }
+                for(var i = 0; i < list.length; i++) {
+                    markup += "<button id='deleteButton' onclick='deleteGallery(" + list[i].id + ")'>X</button>" + "<button id='renameButton' onclick='renameImage(" + list[i].id + ")'>Rename</button>" + "<a href='javascript:imageSelected(" + list[i].id + "," + (i+1) + ")'><img class='listPhotos' src=\"" + list[i].url + "\" alt =\"" + list[i].title + "\")/></a>";
+                }
+                
+//                document.getElementById(""')
+                document.getElementById("galleryWrapper").innerHTML = markup;
+//                imageSelected(list[0].id);
+            }
+            
+            var currSel=0;
+            var currIndex=0;
+            var idCheck = 0;
+            var src = "";
+            
+            function imageSelected(id, index) {
+                console.log(index);
+                console.log(id);
+                currSel = id;
+                currIndex = index;
+                idCheck = id;
+//                $("#galleryWrapper a").removeClass("selected");
+//                $("#galleryWrapper a:nth-of-type(" + index + ")").addClass("selected");
+                
+                var url = "./getPhoto?id=" + id;
+                loadFile(url, function(d) {
+                    var data = JSON.parse(d);
+                    
+                    data.url;
+                    
+                    console.log(data.url);
+                    
+                    var img = "<img id='expandedPhoto' src=" + data.url + "/>";
+                    src = data.url;
+                    
+                    var title = "<h2 id='titleText' align='center'>" + data.title + "</h2>";
+                    document.getElementById("expandTitle").innerHTML = title;
+                    document.getElementById("expandWindow").style.backgroundImage = "url(" + data.url + ")";
+                });
+            }
+            var touch = null;
+            var mouse = null;
+            var ios = null;
+            var android = null;
+            var iphone = null;
+            
+            function parseUA() {
+                var navAgent = navigator.userAgent.toLowerCase();
+                
+                if(navAgent.indexOf("iphone") >= 0) {
+                    touch = true;
+                    iphone = true;
+                    ios = true;
+                    android = false;
+                    mouse = false;
+                }
+                else if(navAgent.indexOf("android") >= 9) {
+                    touch = true;
+                    android = true;
+                    mouse = false;
+                    iphone = false;
+                    ios = false;
+                }
+                else if(navAgent.indexOf("ipad") >= 0) {
+                    touch = true;
+                    ios = true;
+                    mouse = false;
+                    iphone = false;
+                    android = false;
+                }
+                else {
+                    mouse = true;
+                    touch = false;
+                    ios = false;
+                    iphone = false;
+                    android = false;
+                }
+                
+                if(mouse) {
+                    $("body").addClass("mouse");
+                }
+                else {
+                    $("body").addClass("touch");
+                }
+            }
+            
+            function start() {
+                parseUA();
+                var url = "./getGallery";
+                loadFile(url, function(d){
+                    formatGallery(JSON.parse(d));
+                });
+            }
+
+            function deleteImage() {
+                deleteGallery(currSel);
+            }
+            
+            function deleteGallery(index) {
+                var flag = confirm("Are you sure you want to delete this image");
+                
+                console.log(currIndex);
+                console.log(index);
+                
+                if(flag) {
+                    var url = "./deleteGallery" + "?id=" + index;
+                    
+                    loadFile(url, function(d) {
+                       formatGallery(JSON.parse(d)); 
+                    });
+                    
+                    if (idCheck === index) {
+                        document.getElementById("expandTitle").innerHTML = "";
+                        
+                        document.getElementById("expandWindow").style.backgroundImage = "";  
+                    }
+                }
+            }
+            
+            function renameImage(id) {
+                var newName = prompt("Please enter a new title: ");
+                
+                if(newName) {
+                    var url = "./renameGallery" + "?id=" + id + "&newName=" + newName;
+                    
+                    loadFile(url, function(d) {
+                       formatGallery(JSON.parse(d)); 
+                    });
+                    
+                    imageSelected(currSel, currIndex);
+                }
+                else {
+                    alert("You didn't enter a new title.");
+                }
+            }
+            
+            function editImage(id) {
+                var url = document.getElementById("expandWindow").style.backgroundImage.replace('url("', "").replace('")','').replace("url('", "").replace("')",'');
+                
+                console.log(url);
+                document.getElementById("darkRoomFrame").src = "./demo/index.html#" + url;
+                document.getElementById("editWrapper").style.display = "block";
+                
+                sessionStorage.setItem("isEdited", "false")
+                        
+            }
+            
+            function cancelEdit() {
+                document.getElementById("darkRoomFrame").src = "";
+                document.getElementById("editWrapper").style.display = "none";
+            }
+            
+            function saveImageEdit() {
+                cancelEdit();
+                
+                if(sessionStorage.getItem("isEdited") == "true") {
+//                    var filename = fileObj.name;
+                    var fileObj = $('#theFileUploader').get(0).files[0]
+                    var fd = new FormData();
+                    var fileInput = document.getElementById("expandWindow").style.backgroundImage.split("ame470imageserver/")[1];
+                    fileInput = fileInput.split("?")[0];
+                    
+                    fileInput = fileInput.replace('")','');
+                    
+                    fd.append('fileInput', fileInput);
+                    fd.append('date', (new Date()).toString());
+                    fd.append('data', (sessionStorage.getItem("editedImage")));
+
+                    //fd.append('data', data);
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function(e) {  
+                    if (xhr.readyState != 4) { return; }
+
+                    //callback logic
+                    document.getElementById("expandWindow").style.backgroundImage = "https://s3-us-west-2.amazonaws.com/ame470imageserver/" + fileInput + new Date().getTime();    
+                    document.getElementById("expandWindow").style.display = "";
+                    };
+                    xhr.open("POST", "/uploadImage", true);
+                    xhr.send(fd);
+                }
+                formatGallery();
+            }
+            
+            var fileUploaded = function()
+            {
+               var file = $('#theFileUploader').get(0);
+               var fileObj = $('#theFileUploader').get(0).files[0]
+               var filename = fileObj.name;
+               var ext = filename.split(".");
+               ext = ext[ext.length-1];
+//               console.log(ext);
+
+               var fd = new FormData();
+               var fileInput = "s3Upload_" + new Date().getTime().toString() + "." + ext;
+               fd.append('fileInput', fileInput);
+               fd.append('input', file.files[0]);
+               fd.append('date', (new Date()).toString());
+
+                //fd.append('data', data);
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function(e) {  
+                if (xhr.readyState != 4) { return; }
+                  // callback logic
+
+                    
+                    var id = new Date().getTime().toString();
+                    var titleTxt = "";
+                    var imgUrl = "https://s3-us-west-2.amazonaws.com/ame470imageserver/" + fileInput;
+                    
+                    var url = "./addGallery" + "?id=" + id + "&title=" + titleTxt + "&url=" + imgUrl;
+                    
+                    loadFile(url, function(d) {
+                        formatGallery(JSON.parse(d));
+                    });
+                    
+//                    document.getElementById("expandWindow").style.backgroundImage. = imgUrl;
+                    
+                    alert("Done");
+                };
+                xhr.open("POST", "/uploadFile", true);
+                xhr.send(fd);
+            }
+
+        </script>
+        
+        <style>
+            
+            body {
+                background-color: aliceblue;
+                overflow-x: hidden;
+            }
+            
+            #container {
+                width: 1000px;
+            }
+/*
+            
+            .mouse #galleryWrapper:hover, .touch #galleryWrapper:active {
+                background: gold;
+            }
+*/
+            
+            .titleBar {
+                font-family: "Josefin Sans";
+                background-color: rgba(0, 0, 0, 0);
+                background: none;
+                margin-left: 61%;
+                margin-top: 3%;
+                width: 700px;
+            }
+            
+            .imgPreview {
+                position: fixed;
+                width: 480px;
+                top: 70px;
+                bottom: 0;
+                margin-bottom: 10px;
+                background-color: #DDD; 
+                font-size: 21px;
+                overflow-y: auto;
+            }
+            
+            .listPhotos {
+                margin: 15px;
+                border: 1px solid #025;
+                border-radius: 4px;
+                background-color: ghostwhite;
+                padding: 10px;
+                display: block;
+                width: 320px;
+                height: 180px;
+                align-self: center;
+                margin-left: 50px;
+                overflow-y: auto;
+                
+            }
+            
+            .listPhotos:hover {
+                box-shadow: 0 0 5px 3px  rgba(0, 140, 186, 0.5);
+                cursor: pointer;
+            }
+            
+            #expandWindow {
+                position: fixed;
+                width: 100%;
+                background-size: contain;
+                background-repeat: no-repeat;
+                margin-left: 560px;
+                top: 200px;
+                width: 800px;
+                height: 450px;
+            }
+            
+            #expandTitle {
+                font-family: "Josefin Sans";
+                color: crimson;
+                text-align: center;
+                margin-top: -500px;
+                top: 350px;
+                position: fixed;
+                margin-left: 910px;
+                width: 500px;
+            }
+            
+            #titleText {
+                align-self: center;
+                text-align: center;
+                margin-left: -7%;
+                margin-top: 300px;
+                position: fixed;
+                width: 300px;
+            }
+            
+            #expandedPhoto {
+/*
+                background-color: rgba(0, 0, 0, 0);
+                width: 800px;
+                height: 450px;
+                align-self: center;
+                align-content: center;
+                
+*/
+            }
+            
+            #addButton {
+                margin-top: -55px;
+                background-color: #f88;
+                color: #000;
+                cursor: pointer;
+                padding: 18px;
+                width: 237.5px;
+                text-align: center;
+                font-size: 18px;
+                margin-bottom: 25px;
+                font-weight: bold;
+                transition: 0.4s;
+                top: 60px;
+                position: fixed;
+                
+            }
+            
+            .selected {
+                filter: blur(5px);
+                filter: grayscale(100%);
+            }
+            
+            #galleryWrapper button {
+                position: absolute;
+            }
+            
+            #addButton:hover {
+                background-color: #3ad;
+                color: white;
+            }
+            
+            #deleteButton {
+                cursor: pointer;
+                position: fixed;
+                width: 75px;
+                height: 50px;
+                margin-top: 40px;
+                margin-left: -30px;
+            }
+            
+            #deleteButton:hover {
+                box-shadow: 0 0 5px 3px  rgba(0, 140, 186, 0.5);
+                color: #f00;
+            }
+            
+            #markupText {
+                font-family: "Josefin Sans";
+                text-align: center;
+                margin-right: 50px;
+                animation: flash;
+                animation-duration: 0.5s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+                animation animation-play-state: running;
+            }
+            
+            @keyframes flash {
+                from {opacity: 100;}
+                to {opacity: 0;}
+            }
+            
+            #renameButton {
+                cursor: pointer;
+                position: fixed;
+                width: 75px;
+                height: 50px;
+                margin-top: 100px;
+                margin-left: -30px;
+            }
+            
+            #renameButton:hover {
+                box-shadow: 0 0 5px 3px  rgba(0, 140, 186, 0.5);
+                color: #f00;
+            }
+            
+            #editButton {
+                margin-top: -55px;
+                background-color: #f88;
+                color: #000;
+                cursor: pointer;
+                padding: 18px;
+                width: 237.5px;
+                text-align: center;
+                font-size: 18px;
+                margin-bottom: 25px;
+                font-weight: bold;
+                transition: 0.4s;
+                top: 60px;
+                left: 250.5px;
+                position: fixed;
+                border: 1px solid black;
+            }
+            
+            #editButton:hover {
+                background-color: #3ad;
+                color: white;
+            }
+            
+            #editWrapper {
+                display: none;
+                background: rgba(0,0,0,.7);
+                position: fixed;
+                height: 100%;
+                width: 100%;
+                top: 0px;
+                left: 0px;
+            }
+            
+            #editWrapper button{
+                position: fixed;
+                float: right;
+                cursor: pointer;
+                position: fixed;
+/*                top: 50%;*/
+                width: 75px;
+                height: 50px;
+            }
+            
+            #editWrapper button:hover {
+                box-shadow: 0 0 5px 3px  rgba(0, 140, 186, 0.5);
+                color: #f00;
+            }
+
+            #darkRoomFrame {
+                position: fixed;
+                height: 100%;
+                width: 100%;
+                top: 0px;
+                left: 0px;
+            }
+            
+/*
+            #theFileUploader {
+                position: fixed;
+                margin-left: -125px;
+                margin-top: -60px;
+                
+            }
+            #theFileUploader input {
+                float: right;
+                cursor: pointer;
+                top: 50%;
+                width: 75px;
+                height: 50px;
+            }
+*/
+            #theFileUploader {
+                height: 0;
+                width: 0;
+            }
+            
+            #fileUploadContainer {
+                position: fixed;
+                margin-top: -79px;
+                margin-left: -125px;
+            }
+            
+            #fileUploadLabel {
+                font-family: 'Lucida Grande';
+                margin-top: -55px;
+                background-color: #f88;
+                color: #000;
+                cursor: pointer;
+                padding: 18px;
+                width: 200.5px;
+                text-align: center;
+                font-size: 18px;
+                margin-bottom: 25px;
+                font-weight: bold;
+                transition: 0.4s;
+                top: 60px;
+                left: 250.5px;
+                position: fixed;
+                border-style: solid;
+                border: 1px solid black;
+            }
+            #fileUploadLabel:hover {
+                background-color: #3ad;
+                color: white;
+            }
+
+        
+        </style>
+    </head>
+    
+    <body onload='start()'>
+        <div></div>
+        <div id="container">
+            <div class="titleBar">
+                <h1 align="center">My Image Collection</h1>
+            </div>
+            
+            <div class="imgPreview">
+<!--                <button id="addButton" align="left" onclick='addNew()'>Add Image</button>-->
+                    <input type='file' id='theFileUploader' onchange='fileUploaded()'> 
+                    <label id="fileUploadLabel" style="left: 5px;" for="theFileUploader">Add Image</label>
+                <button id='editButton' onclick='editImage(" + list[i].id + ")'>Edit</button>
+                
+                <ol id='galleryWrapper'>
+<!--
+-->
+                </ol>
+            </div>  
+
+            <div id="expandTitle"></div>
+            
+            <div id="rightSide">
+                <div id="expandWindow"></div>
+            </div>
+            
+            <div id='editWrapper'>
+                <iframe crossorigin='anonymous' id='darkRoomFrame'> </iframe>
+                <button style='right: 0px' onclick='saveImageEdit()'>Save</button>
+                <button onclick='cancelEdit()'>Cancel</button>
+            </div>
+        </div>
+    </body>
+
+</html>

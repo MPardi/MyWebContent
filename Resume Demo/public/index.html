@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Arsenal:400,400i|Poiret+One|Raleway|Ropa+Sans" rel="stylesheet">
+        <title>Michael Pardi - Resume</title>
+	<!--Styles-->
+        <style>
+            /* Style the buttons that are used to open and close the accordion panel */
+        button.accordion {
+            background-color: #ccc;
+            color: #000;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+            font-family: 'Arsenal', sans-serif;
+        }
+
+            /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+
+        button.accordion:hover {
+            background-color: #333;
+            color: white;
+        }
+            
+        button.accordion.active {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+            
+        button.accordion:after {
+            content: '\002B';
+            color: #white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        button.accordion.active:after {
+            content: "\2212";
+        }
+
+        /* Style the accordion panel. Note: hidden by default */
+
+        div.panel {
+            padding: 0 18px;
+            margin-left: -25px;
+            background-color: white;
+            display: none;
+            background: none;
+            font-family: 'Ropa Sans', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            text-align: center;
+            padding-bottom: 0;
+            font-weight: 900;
+        }
+            
+        h2 {
+            font-family: 'Raleway', sans-serif; 
+            margin: 0;
+            text-align: center;
+            padding-bottom: 0;
+        }
+ 
+        .content {
+            margin-left:auto;
+            margin-right:auto;
+            width:700px;
+        }
+ 
+ 	   .verticalStripeRight {
+            z-index: -2;
+            background: repeating-linear-gradient(
+                to right,
+                    #5d9634,
+                #5d9634 20px,
+                #538c2b 20px,
+                #538c2b 40px
+            );
+            position: fixed;
+            top: 0;
+            right: 0px;
+            width: 175px;
+            opacity: 0.7;
+            height: 100%;
+            margin-left:auto;
+            margin-right:auto;
+	   }
+
+       .verticalStripeLeft {
+            z-index: -2;
+            background: repeating-linear-gradient(
+                to right,
+                #5d9634,
+                #5d9634 20px,
+                #538c2b 20px,
+                #538c2b 40px
+            );
+            position: fixed;
+            top: 0;
+            left: 0px;
+            width: 175px;
+            opacity: 0.7;
+            height: 100%;
+            margin-left:auto;
+            margin-right:auto;
+       }	
+
+        li {
+            margin-left: 10px;
+        }
+
+        img {
+            position: relative;
+            left: 25px;
+            padding-top: 20px;
+        }
+
+        #pic-ul {
+            position: relative;
+            margin-top: 3px;
+            margin-left: -15px;
+        }
+
+        body {
+            background-image: url(geometry2/geometry2.png);
+        }
+            
+        </style>
+    </head>
+
+    <body>
+        
+        <div id="verticalStripe"></div>
+        
+        <div class="content">
+            <div class="verticalStripeRight"></div>
+	
+            <div class="verticalStripeLeft"></div>
+            
+            <!-- Add anchored(Clickable) linkes for these address (google Maps) and number/email. -->
+            <h1> Michael Pardi </h1>
+            <h2> <a href="https://goo.gl/maps/HEwzUrEN1YH2">1010 Dewdew Street, Phoenix, Arizona 85028</a> </h2>
+            <h2> <a href="mailto:MyTuts@Google.com">MyTuts@Google.com</a> | <a href="tel:+6025553222">(602) 555 - 3222</a> </h2>
+
+            <button class="accordion">Objective</button>
+
+            <div class="panel">
+                <ul>
+                    <li>
+                        To be employeed as a professional programmer.
+                    </li>
+                    <li>
+                        Design publicly appreciated software.
+                    </li>
+                    <li>
+                        Create unique and engaging programs.
+                    </li>
+                </ul>
+            </div>
+
+            <button class="accordion">Education</button>
+
+            <div class="panel">
+                <ul>
+                    Arizona State University <br/> 
+                        <ul>
+                            <li>
+                            Graduated May 2017
+                            </li> 
+                            <li>
+                            4.2 GPA
+                            </li>
+                        </ul>
+                    Maricopa Community College <br/>
+                        <ul>
+                            <li>
+                                Graduated May 2015
+                            </li>
+                            <li>
+                                4.0 GPA
+                            </li>
+                        </ul>
+                </ul>
+            </div>
+
+            <button class="accordion">Skills</button>
+
+            <div class="panel">
+                <ul>
+                    Proficient in: <br/>
+                    <ul>
+                        <li>
+                            Java
+                        </li>
+                        <li>
+                            C/C++
+                        </li>
+                        <li>
+                            HTML/CSS/JS
+                        </li>
+                        <li>
+                            Python (2.0/3.0)
+                        </li>
+                    </ul>
+                    Experience with desiging and troubleshooting electrical circuits.
+                </ul>
+            </div>
+
+            <button class="accordion">Awards</button>
+
+            <div class="panel">
+                <ul>
+                    <li>
+                        Presidential Medal of Freedumb
+                    </li>
+                    <li>
+                        Medal of Valor
+                    </li>
+                    <li>
+                        Nobel Peace Prize
+                    </li>
+                    <li>
+                        Nobel War Prize
+                    </li>
+                </ul>
+            </div>
+
+            <button class="accordion">References</button>
+
+            <div class="panel">
+                <ul>
+                    <li>
+                        Timmy Timmerson
+                        <ul>
+                            <li>
+                                (602) 555 - 1235
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Bill Cosby
+                        <ul>
+                            <li>
+                                (623) 555 - 2376
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Doobly Bubbly
+                        <ul>
+                            <li>
+                                (480) 555 - 6789
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+            
+            <button class="accordion">About Me</button>
+        
+            <div class="panel">
+                <img id="picofme" src="personalphoto.jpg" alt="A picture of me..." width="335px" height="188.5px">
+                <ul id="pic-ul">
+                    A little picture of me...
+                </ul>
+            </div>
+            
+        </div>
+        
+        <script>
+            /*block comment */
+            //single line comment
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].onclick = function(){
+                    /* Toggle between adding and removing the "active" class,
+                    to highlight the button that controls the panel */
+                    this.classList.toggle("active");
+
+                    /* Toggle between hiding and showing the active panel */
+                    var panel = this.nextElementSibling;
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } 
+                    else {
+                        panel.style.display = "block";
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
