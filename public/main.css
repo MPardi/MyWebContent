@@ -1,0 +1,126 @@
+.container {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    widthL: 1000px;
+}
+
+#mainText {
+    text-align: center;
+    vertical-align: middle;
+    display: table;
+    width: 50%;
+    transform: translateX(50%);
+    align-content: center;
+    justify-content: center;
+    font-size: 48px;
+    margin-top: -10px;
+    padding-top: 20px;
+    margin-botton: -50px;
+    font-family: 'Kumar One', cursive;
+}
+
+#testImg {
+    position: static;
+    margin-top: 50px;
+    padding-top: -50px;
+    
+    animation-name: tstImg;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+#testImg:hover {
+
+}
+
+#leftSide {
+    background-color: antiquewhite;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    z-index: -500;
+}
+
+#leftSide:hover {
+}
+
+#rightSide {
+    background-color: darkseagreen;
+    opacity: 50%;
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    z-index: -500;
+}
+
+#rightSide:hover {
+}
+
+#buttonOne {
+    position: absolute;
+    left: 10%;
+    bottom: 37%;
+    color: white;
+    font-family: 'Kumar One', cursive;
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgb(60, 190, 60);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+#buttonOne:hover {
+    background-color: rgb(90, 120, 90);
+    color: rgb(225, 225, 225);
+}
+
+#buttonOne:active {
+    color: rgb(225, 225, 225);
+    background-color: rgb(90, 120, 90);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#buttonTwo {
+    position: absolute;
+    right: 10%;
+    bottom: 37%;
+    color: white;
+    font-family: 'Kumar One', cursive;
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgb(60, 60, 190);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+#buttonTwo:hover {
+    background-color: rgb(90, 90, 120);
+    color: rgb(225, 225, 225);
+}
+
+#buttonTwo:active {
+/*                background-color: white;*/
+    color: rgb(225, 225, 225);
+    background-color: rgb(90, 90, 120);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+@keyframes tstImg {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(25px);}
+    100% {transform: translateY(0px);}
+}
