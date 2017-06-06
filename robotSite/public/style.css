@@ -30,8 +30,8 @@ p {
 }
 
 .bg-2 {
-    background-color: rgb(198, 52, 49);
-    color: #005397;
+    background-color: #005397;
+    color: rgb(198, 52, 49);
 }
 
 .hero-img {
