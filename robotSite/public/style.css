@@ -1,7 +1,14 @@
 body {
-    font-family: 'Roboto', sans-serif;
     line-height: 1.8;
     color: #f5f6f7;
+}
+
+h1 {
+    font-family: 'Sigmar One', cursive;
+}
+
+h3 h2 p {
+    font-family: 'Old Standard TT', serif;
 }
 
 .img-shama {
@@ -47,6 +54,15 @@ p {
     width: 480px;
     max-width: 480px;
     max-height: 360px;
+    width: 100%;
+}
+
+.portrait-control {
+    display: inline;
+    height: auto;
+    width: 600px;
+    max-width: 600px;
+    max-height: inherit;
     width: 100%;
 }
 
