@@ -1,6 +1,15 @@
 body {
     line-height: 1.8;
-    color: #f5f6f7;
+/*    color: #f5f6f7;*/
+}
+
+.body-wrapper: {
+    background-color: yellow;
+}
+
+.body-wrapper:after {
+    background-image: url("hip-square/hip-square.png");
+    opacity: .9;
 }
 
 h1 {
@@ -67,6 +76,7 @@ p {
 }
 
 .navbar {
+    background-color: #5A6EC2;
     padding-top: 15px;
     padding-bottom: 15px;
     border: 0;
@@ -76,9 +86,18 @@ p {
     letter-spacing: 5px;
 }
 
-.navbar-nav li a:hover {
-    color: #1abc9c !important;
+a {
+    color: #EA8013 !important;
 }
 
-whole-center {
+.navbar-toggle {
+    background-color: white;
+}
+
+.icon-bar {
+    background-color: black !important;
+}
+
+.navbar-nav li a:hover {
+    color: #1abc9c !important;
 }

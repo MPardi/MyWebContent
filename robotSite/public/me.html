@@ -3,7 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>WHO</title>
+    <title>ME</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
@@ -14,6 +17,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <link rel=stylesheet href="https://s3-us-west-2.amazonaws.com/colors-css/2.2.0/colors.min.css">
+
     <style>
         body {
             background-color: #EF3E4A;
@@ -22,8 +27,28 @@
     </style>
 </head>
 
-<body>
-    <div class="container-fluid bg-2 text-center">
+<body class="bg-yellow black">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+                <a class="navbar-brand" href="index.html">Home</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="who.html">WHO</a></li>
+                    <li><a href="what.html">WHAT</a></li>
+                    <li><a href="where.html">WHERE</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid text-center">
         <h1>Self-Portrait</h1>
         <img class="portrait-control img-rounded img-responsive img-shama" src="srprgv2rr22z.jpg" alt="Taken Recently">
         <h3>Good Evening.</h3>
