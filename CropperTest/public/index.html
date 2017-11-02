@@ -7,8 +7,16 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/audiosynth/1.0.0/audiosynth.js"></script>
 
     <script>
+        Synth instanceof AudioSynth; // true
+
+        var testInstance = new AudioSynth;
+        testInstance instanceof AudioSynth; // true
+
+        testInstance === Synth; // true
+        
         var image = document.getElementById("image");
         var cropper = new Cropper(image, {
             aspectRatio: 16 / 9,
@@ -22,6 +30,10 @@
                 console.log(e.detail.scaleY);
             }
         });
+        
+        function playNote() {
+            Synth.generate(sound, note, octave, duration);
+        }
 
     </script>
 
@@ -38,6 +50,10 @@
 <body>
     <div class="container">
         <img id="image" src="BenderHD.jpg">
+    </div>
+    
+    <div>
+        <button onclick="playNote()" type="button">Play</button>
     </div>
 </body>
 
