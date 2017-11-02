@@ -62,6 +62,21 @@
             Synth.play('piano', note, 3, 2);
         }
 
+        function myMove() {
+            var elem = document.getElementById("image1");
+            var pos = 0;
+            var id = setInterval(frame, 10);
+
+            function frame() {
+                if (pos == 350) {
+                    clearInterval(id);
+                } else {
+                    pos++;
+                    elem.style.left = pos + 'px';
+                }
+            }
+        }
+
     </script>
 
     <style>
@@ -75,7 +90,8 @@
             /* This rule is very important, please do not ignore this! */
         }
         
-        #image {
+        #image1,
+        #image2 {
             display: block;
             margin: auto;
             width: 40%;
@@ -120,10 +136,10 @@
     <div class="container-fluid">
         <div class="row centered">
             <div class="col">
-                <img id="image" src="BenderHDPixelLomoNonGS.jpg">
+                <img id="image1" src="BenderHDPixelLomoNonGS.jpg">
             </div>
             <div class="col">
-                <img id="image" src="BenderHDPixelLomo.jpg">
+                <img id="image2" src="BenderHDPixelLomo.jpg">
             </div>
         </div>
     </div>
@@ -139,6 +155,10 @@
             <button id="btnB" onclick="playNote(this.id)" style="width: 14%;">B</button>
         </div>
     </div>
+
+    <p>
+        <button onclick="myMove()">Click Me</button>
+    </p>
 </body>
 
 </html>
