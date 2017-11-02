@@ -33,34 +33,28 @@
 
         function playNote(id) {
             console.log(id);
-            
+
             var note = '';
-            
-            if (id="btnC") {
+
+            if (id = "btnC") {
                 note = 'C';
-            }
-            else if (id="btnD") {
+            } else if (id = "btnD") {
                 note = 'D';
-            }
-            else if (id="btnE") {
+            } else if (id = "btnE") {
                 note = 'E';
-            }
-            else if (id="btnF") {
+            } else if (id = "btnF") {
                 note = 'F';
-            }
-            else if (id="btnG") {
+            } else if (id = "btnG") {
                 note = 'G';
-            }
-            else if (id="btnA") {
+            } else if (id = "btnA") {
                 note = 'A';
-            }
-            else if (id="btnB") {
+            } else {
                 note = 'B';
             }
-            
+
             console.log(note);
-            
-            Synth.play('piano', note, 4, 2);
+
+            Synth.play('piano', note, 3, 2);
         }
 
     </script>
