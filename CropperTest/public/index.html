@@ -2,8 +2,12 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <title>Cropper Test</title>
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.js"></script>
+
     <script>
         var image = document.getElementById("image");
         var cropper = new Cropper(image, {
@@ -20,8 +24,6 @@
         });
 
     </script>
-    <meta charset="UTF-8">
-    <title>Cropper Test</title>
 
     <style>
         img {
@@ -34,11 +36,9 @@
 </head>
 
 <body>
-    <div>
-        <canvas id="image" src="BenderHD.jpg"></canvas>
+    <div class="container">
+        <img id="image" src="BenderHD.jpg">
     </div>
-
-
 </body>
 
 </html>
