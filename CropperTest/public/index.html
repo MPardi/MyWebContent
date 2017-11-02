@@ -33,7 +33,9 @@
 
         function playNote(id) {
             console.log(id);
-            var note;
+            
+            var note = '';
+            
             if (id="btnC") {
                 note = 'C';
             }
@@ -55,6 +57,8 @@
             else if (id="btnB") {
                 note = 'B';
             }
+            
+            console.log(note);
             
             Synth.play('piano', note, 4, 2);
         }
