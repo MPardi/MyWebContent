@@ -62,21 +62,6 @@
             Synth.play('piano', note, 3, 2);
         }
 
-        function myMove() {
-            var elem = document.getElementById("image1");
-            var pos = 0;
-            var id = setInterval(frame, 10);
-
-            function frame() {
-                if (pos == 350) {
-                    clearInterval(id);
-                } else {
-                    pos++;
-                    elem.style.left = pos + 'px';
-                }
-            }
-        }
-
     </script>
 
     <style>
@@ -94,6 +79,8 @@
         #image2 {
             display: block;
             margin: auto;
+            margin-bottom: 50%;
+            margin-top 50%;
             width: 40%;
             -webkit-animation: spin 4s linear infinite;
             -moz-animation: spin 4s linear infinite;
@@ -177,10 +164,6 @@
             <button id="btnB" onclick="playNote(this.id)" style="width: 14%;">B</button>
         </div>
     </div>
-
-    <p>
-        <button onclick="myMove()">Click Me</button>
-    </p>
 </body>
 
 </html>
