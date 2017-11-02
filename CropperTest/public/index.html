@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.1.3/cropper.js"></script>
+    <meta charset="UTF-8">
+    <title>Cropper Test</title>
+
+    <style>
+        img {
+            /* Limit image width to avoid overflow the container */
+            max-width: 100%;
+            /* This rule is very important, please do not ignore this! */
+        }
+
+    </style>
+
+    <script>
+        var image = document.getElementById('image');
+        var cropper = new Cropper(image, {
+            aspectRatio: 16 / 9,
+            crop: function(e) {
+                console.log(e.detail.x);
+                console.log(e.detail.y);
+                console.log(e.detail.width);
+                console.log(e.detail.height);
+                console.log(e.detail.rotate);
+                console.log(e.detail.scaleX);
+                console.log(e.detail.scaleY);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <img id="image" src="https://vignette1.wikia.nocookie.net/villains/images/1/17/BenderHD.jpg/revision/latest?cb=20170413201605">
+    </div>
+
+
+</body>
+
+</html>
