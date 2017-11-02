@@ -34,21 +34,21 @@
         function playNote(id) {
             console.log(id);
 
-            var note = '';
+            var note = "";
 
-            if (id = "btnC") {
+            if (id.endsWith("C")) {
                 note = 'C';
-            } else if (id = "btnD") {
+            } else if (id.endsWith("D")) {
                 note = 'D';
-            } else if (id = "btnE") {
+            } else if (id.endsWith("E")) {
                 note = 'E';
-            } else if (id = "btnF") {
+            } else if (id.endsWith("F")) {
                 note = 'F';
-            } else if (id = "btnG") {
+            } else if (id.endsWith("G")) {
                 note = 'G';
-            } else if (id = "btnA") {
+            } else if (id.endsWith("A")) {
                 note = 'A';
-            } else {
+            } else if (id.endsWith("B"))
                 note = 'B';
             }
 
