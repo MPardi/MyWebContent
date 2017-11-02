@@ -16,7 +16,7 @@
         testInstance instanceof AudioSynth; // true
 
         testInstance === Synth; // true
-        
+
         var image = document.getElementById("image");
         var cropper = new Cropper(image, {
             aspectRatio: 16 / 9,
@@ -30,9 +30,32 @@
                 console.log(e.detail.scaleY);
             }
         });
-        
-        function playNote() {
-            Synth.play('piano', 'C', 4, 2);
+
+        function playNote(id) {
+            var note;
+            if (id="btnC") {
+                note = 'C';
+            }
+            else if (id="btnD") {
+                note = 'D';
+            }
+            else if (id="btnE") {
+                note = 'E';
+            }
+            else if (id="btnF") {
+                note = 'F';
+            }
+            else if (id="btnG") {
+                note = 'G';
+            }
+            else if (id="btnA") {
+                note = 'A';
+            }
+            else if (id="btnB") {
+                note = 'B';
+            }
+            
+            Synth.play('piano', note, 4, 2);
         }
 
     </script>
@@ -51,9 +74,17 @@
     <div class="container">
         <img id="image" src="BenderHD.jpg">
     </div>
-    
+
     <div>
-        <button onclick="playNote()" type="button">Play</button>
+        <div class="btn-group">
+            <button id="btnC" onclick="playNote(this.id)">C</button>
+            <button id="btnD" onclick="playNote(this.id)">D</button>
+            <button id="btnE" onclick="playNote(this.id)">E</button>
+            <button id="btnF" onclick="playNote(this.id)">F</button>
+            <button id="btnG" onclick="playNote(this.id)">G</button>
+            <button id="btnA" onclick="playNote(this.id)">A</button>
+            <button id="btnB" onclick="playNote(this.id)">B</button>
+        </div>
     </div>
 </body>
 
