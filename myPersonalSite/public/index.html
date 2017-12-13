@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Site of Michael Pardi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="dist/paper-full.js"></script>
+    <script type="text/paperscript" canvas="wormCanvas">
+        /////////////////////////////////////////////////////////////////////
+        // Values
+
+        var values  = {
+            minDistance: 10,
+            maxDistance: 30,
+            varyThickness: false
+        };
+
+        // All newly created items will inherit the following styles:
+        project.currentStyle = {
+            fillColor: 'white',
+            strokeColor: 'black'
+        };
+
+        /////////////////////////////////////////////////////////////////////
+        // Mouse handling
+
+        tool.minDistance = values.minDistance;
+        tool.maxDistance = values.maxDistance;
+
+        var worm;
+
+        // Every time the user clicks the mouse to drag we create a path
+        // and when a user drags the mouse we add points to it
+        function onMouseDown(event) {
+            worm = new Path();
+            worm.add(event.point, event.point);
+            worm.closed = true;
+        }
+
+        function onMouseDrag(event) {
+            // the vector in the direction that the mouse moved
+            var step = event.delta;
+
+            // if the vary thickness checkbox is marked
+            // divide the length of the step vector by two:
+            if (values.varyThickness) {
+                step.length = step.length / 2;
+            } else {
+                // otherwise set the length of the step vector to half of
+                // minDistance
+                step.length = values.minDistance / 2;
+            }
+
+            // the top point: the middle point + the step rotated by -90
+            // degrees
+            //   -----*
+            //   |
+            //   ------
+            var top = event.middlePoint + step.rotate(-90);
+
+            // the bottom point: the middle point + the step rotated by 90
+            // degrees
+            //   ------
+            //   |
+            //   -----*
+            var bottom = event.middlePoint + step.rotate(90);
+
+            // add the top point to the end of the path
+            worm.add(top);
+
+            // insert the bottom point after the first segment of the path
+            worm.insert(1, bottom);
+
+            // make a new line path from top to bottom
+            new Path(top, bottom);
+
+            // This is the point at the front of the worm:
+            worm.firstSegment.point = event.point;
+
+            // smooth the segments of the path
+            worm.smooth();
+        }
+    </script>
+    
+    <script type="text/paperscript" canvas="roundSquareCanvas">
+        /////////////////////////////////////////////////////////////////////
+        // Values
+
+        var values = {
+            radius: 10,
+            tolerance: 5
+        };
+
+        checkValues();
+
+        /////////////////////////////////////////////////////////////////////
+        // Mouse handling
+
+        var handle;
+        function checkValues() {
+            var min = values.radius * 2;
+            if (values.tolerance < min) values.tolerance = min;
+            handle = values.radius * Numerical.KAPPA;
+        }
+
+        var path;
+        function onMouseDown(event) {
+            path = new Path({
+                segments: [event.point, event.point],
+                strokeColor: 'black',
+                strokeWidth: 5,
+                strokeCap: 'round'
+            });
+            prevPoint = path.firstSegment.point;
+            curPoint = path.lastSegment.point;
+            curHandleSeg = null;
+        }
+
+        var curPoint, prevPoint, curHandleSeg;
+        function onMouseDrag(event) {
+            var point = event.point;
+            var diff = (point - prevPoint).abs();
+            if (diff.x < diff.y) {
+                curPoint.x = prevPoint.x;
+                curPoint.y = point.y;
+            } else {
+                curPoint.x = point.x;
+                curPoint.y = prevPoint.y;
+            }
+            var normal = curPoint - prevPoint;
+            normal.length = 1;
+            if (curHandleSeg) {
+                curHandleSeg.point = prevPoint + (normal * values.radius);
+                curHandleSeg.handleIn = normal * -handle;
+            }
+            var minDiff = Math.min(diff.x, diff.y);
+            if (minDiff > values.tolerance) {
+                var point = curPoint - (normal * values.radius);
+                var segment = new Segment(point, null, normal * handle);
+                path.insert(path.segments.length - 1, segment);
+                curHandleSeg = path.lastSegment;
+                // clone as we want the unmodified one:
+                prevPoint = curHandleSeg.point.clone();
+                path.add(curHandleSeg);
+                curPoint = path.lastSegment.point;
+            }
+        }
+    </script>
+    
+    <style>
+        #wormCanvas, #roundSquareCanvas {
+            border: 2px dashed black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id='wormCanvas'></canvas>
+        <canvas id='roundSquareCanvas'></canvas>
+        <button id='wormsButton'>Worms Canvas</button>
+        <button id='roundSquareButton'>Round Square Canvas</button>
+        <button id='clear'>Clear Canvas</button>
+    </div>
+    
+    <script>
+        var wormCanvas = document.getElementById('wormCanvas');
+        var roundSquareCanvas = document.getElementById('roundSquareCanvas');
+        
+        var wormCtx = wormCanvas.getContext('2d');
+        var roundSquareCtx = roundSquareCanvas.getContext('2d');
+        
+        var wormsButton = document.getElementById('wormsButton');
+        var roundSquareButton = document.getElementById('roundSquareButton');
+        var clearButton = document.getElementById('clear');
+        
+        var isWorms = true;
+        var isRoundSquare = false;
+        
+        wormCanvas.width = window.innerWidth / 2;
+        wormCanvas.height = window.innerHeight / 2;
+        
+        roundSquareCanvas.width = window.innerWidth / 2;
+        roundSquareCanvas.height = window.innerHeight / 2;
+        
+        wormsButton.style.display = "none";
+        roundSquareCanvas.style.display = "none";
+        
+        roundSquareButton.onclick = function() {
+            roundSquareButton.style.display = "none";
+            wormsButton.style.display = "initial";
+            
+            wormCanvas.style.display = "none";
+            roundSquareCanvas.style.display = "initial";
+        }
+        
+        wormsButton.onclick = function() {
+            wormsButton.style.display = "none";
+            roundSquareButton.style.display = "initial";
+            
+            roundSquareCanvas.style.display = "none";
+            wormCanvas.style.display = "initial";
+        }
+        
+        clear.onclick = function() {
+            if(roundSquareCanvas.style.display === "none") {
+                wormCtx.clearRect(0, 0, wormCanvas.width, wormCanvas.height);
+                wormCtx.stroke();
+            }
+            else {
+                roundSquareCtx.clearRect(0, 0, roundSquareCanvas.width, roundSquareCanvas.height);
+            }
+        }        
+    </script>
+
+</body>
+
+</html>
