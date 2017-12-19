@@ -1,0 +1,60 @@
+e
+<!doctype html>
+<html>
+
+<head>
+    <script src="asyncReq.js">
+
+
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <script>
+        var runCount;
+
+        var x = function() {
+            loadFile("./getData", function(data) {
+                var obj = JSON.parse(data);
+                document.getElementById("results").innerHTML +=
+                    "<h2><b>Sensor Status: </b></h2><p>" + obj.motion + "<br></p>";
+                runCount++;
+            });
+        }
+
+        function start() {
+            runCount = 0;
+            x();
+            setInterval("x()", 1000);
+        }
+
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        hr {
+            display: block;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            margin-left: auto;
+            margin-right: auto;
+            border-style: inset;
+            border-width: 1px;
+            color: black;
+        }
+
+    </style>
+
+</head>
+
+<body onload='start()' style="background-color: #53F1F1;">
+    <div style="width: 35%; margin: 0 auto;">
+        <h1 style="text-align: center; background-color: #FF5858; border-style: dashed;">IoT SENSOR DATA</h1>
+    </div>
+    <hr noshade width="40%">
+    <div style="text-align: center;" id='results'> </div>
+
+</body>
+
+</html>
