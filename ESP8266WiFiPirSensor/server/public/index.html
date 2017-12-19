@@ -14,6 +14,7 @@ e
         var x = function() {
             loadFile("./getData", function(data) {
                 var obj = JSON.parse(data);
+                document.getElementById("results").innerHTML = "";
                 document.getElementById("results").innerHTML +=
                     "<h2><b>Sensor Status: </b></h2><p>" + obj.motion + "<br></p>";
                 runCount++;
