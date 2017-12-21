@@ -20,9 +20,18 @@
 
     <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap-reboot.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="css/normalize.css">
@@ -31,6 +40,17 @@
     <style>
         body {
             font-family: 'Raleway', sans-serif;
+        }
+        
+        .hero-image {
+            background-image: url("img/jumbotronBkg.jpeg");
+            height: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            /*            filter: blur(5px);*/
+            /*            -webkit-filter: blur(5px);*/
         }
 
     </style>
@@ -60,10 +80,17 @@
             <a class="btn btn-info" href="#" role="button"><i class="fa fa-github fa-lg"></i> Github</a>
         </nav>
 
+        <div class="jumbotron jumbotron-fluid" style="background-image: url(img/jumbotronBkg.jpeg); background-size: cover;">
+            <div class="container">
+                <h1 class="text-light display-3" style="z-index: 100;">Bootstrap Tutorial</h1>
+                <p class="lead">Bootstrap is the most popular HTML, CSS...</p>
+            </div>
+        </div>
+
         <div class="container-fluid bg-light">
             <div class="row">
                 <div class="col bg-secondary">
-    
+
                 </div>
 
                 <div class="col-10 bg-primary">
