@@ -91,11 +91,11 @@
             <div class="col">
                 <div class="listElement" ng-app="myApp" ng-controller="catalogCtrl">
                     <form id="todoForm">
-                        <label>Add Todo Task: </label>
+                        <label>Add Address: </label>
                         <input id="todoInputID" class="todoInput" type="text" ng-model="input">
                         <button class="btn btn-primary btn-sm" type="submit" ng-click="add()">Add</button>
                     </form>
-                    <p><b>Todo: </b></p>
+                    <p><b>Saved Addresses: </b></p>
                     <ul ng-repeat="x in list">
                         <button class="button button3" ng-click="remove($index)">Remove</button> {{ x | myFormat }}
                     </ul>
@@ -139,7 +139,7 @@
 
         app.controller('catalogCtrl', function($scope) {
             $scope.list = [
-                'Add things to todo list'
+                '52.34.69.96'
             ];
 
             $scope.add = function() {
