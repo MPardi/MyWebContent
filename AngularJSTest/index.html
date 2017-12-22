@@ -80,7 +80,7 @@
     </style>
 </head>
 
-<body>
+<body class="bg-secondary text-light">
     <div class="container">
         <div class="row">
 
@@ -95,10 +95,13 @@
                         <input id="todoInputID" class="todoInput" type="text" ng-model="input">
                         <button class="btn btn-primary btn-sm" type="submit" ng-click="add()">Add</button>
                     </form>
-                    <p><b>Saved Addresses: </b></p>
-                    <ul ng-repeat="x in list">
-                        <button class="button button3" ng-click="remove($index)">Remove</button> {{ x | myFormat }}
-                    </ul>
+
+                    <div class="border">
+                        <p><b>Saved Addresses: </b></p>
+                        <ul ng-repeat="x in list">
+                            <button class="button button3" ng-click="remove($index)">Remove</button> {{ x | myFormat }}
+                        </ul>
+                    </div>
                 </div>
             </div>
 
