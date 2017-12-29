@@ -11,23 +11,29 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins|Raleway|Roboto" rel="stylesheet">
 
     <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+        
         .sidebar {
             height: 100%;
             /* Full-height: remove this if you want "auto" height */
-            width: 350px;
+            width: 400px;
             position: fixed;
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: #f44336;
+            /*            background-color: #f44336;*/
             overflow-x: hidden;
             padding-top: 20px;
         }
         
         .main-content {
-            margin-left: 350px;
+            margin-left: 400px;
             padding: 20px 10px 0px 10px;
         }
 
@@ -37,15 +43,36 @@
 
 <body>
     <div id="wrapper">
-        <div class="sidebar">
+        <div class="sidebar border border-dark border red">
             <div class="container-fluid">
-                <h1 class="text-light text-center" style="letter-spacing: 20px;">Michael<br>Thomas<br>Pardi</h1>
+                <h1 class="text-center" style="letter-spacing: 20px;">Michael<br>Thomas<br>Pardi</h1>
                 <div class="text-center" style="margin: 25px 0;">
                     <img class="img-thumbnail rounded-circle" src="img/person.svg" style="width: 150px; height: auto;">
                 </div>
-                
-                <div class="text-center">
+
+                <div class="text-dark set-padding-small set-margin rounded border border-dark pale-blue gen-box-shadow">
+                    <div class="container">
+                        <p><i class="set-margin-top fa fa-briefcase fa-fw fa-lg set-margin-right set-text-large"></i>Web Developer</p>
+                        <p><i class="fa fa-home fa-fw fa-lg set-margin-right set-text-large"></i>Phoenix, Arizona</p>
+                        <p><i class="fa fa-envelope fa-fw fa-lg set-margin-right set-text-large"></i>Michael_Pardi@outlook.com</p>
+                        <p><i class="fa fa-phone fa-fw fa-lg set-margin-right set-text-large"></i>(602) 531 - 1154</p>
+                    </div>
+                </div>
+
+                <div class="text-center set-margin set-margin-top-lg">
                     <a class="btn btn-lg btn-warning btn-block" href="https://github.com/MPardi" role="button" rel="noopener noreferrer" target="_blank"><i class="fa fa-github fa-lg"></i> GitHub</a>
+                </div>
+
+                <div class="text-dark set-margin set-margin-top-lg">
+                    <p class="h4 text-center"><b>Send me a comment</b></p>
+                    <form action="/" id="commentForm">
+                        From:<br>
+                        <input type="text" name="sender" value="Test" size="40"><br> Comment:
+                        <br>
+                        <textarea name="comment" form="commentForm" rows="17" cols="39">Please enter your comment...</textarea>
+                        <input type="submit">
+                        <input type="reset">
+                    </form>
                 </div>
             </div>
         </div>

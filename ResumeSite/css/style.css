@@ -1,0 +1,142 @@
+.set-margin {
+    margin: 16px!important
+}
+
+.set-margin-top {
+    margin-top: 16px!important
+}
+
+.set-margin-top-lg {
+    margin-top: 40px!important
+}
+
+.set-margin-bottom {
+    margin-bottom: 16px!important
+}
+
+.set-margin-left {
+    margin-left: 16px!important
+}
+
+.set-margin-right {
+    margin-right: 16px!important
+}
+
+.set-padding-small {
+    padding: 4px 8px!important
+}
+
+.set-padding {
+    padding: 8px 16px!important
+}
+
+.set-padding-large {
+    padding: 12px 24px!important
+}
+
+.set-padding-16 {
+    padding-top: 16px!important;
+    padding-bottom: 16px!important
+}
+
+.set-padding-24 {
+    padding-top: 24px!important;
+    padding-bottom: 24px!important
+}
+
+.set-padding-32 {
+    padding-top: 32px!important;
+    padding-bottom: 32px!important
+}
+
+.set-padding-48 {
+    padding-top: 48px!important;
+    padding-bottom: 48px!important
+}
+
+.set-padding-64 {
+    padding-top: 64px!important;
+    padding-bottom: 64px!important
+}
+
+.set-text-tiny {
+    font-size: 10px!important
+}
+
+.set-text-small {
+    font-size: 12px!important
+}
+
+.set-text-medium {
+    font-size: 15px!important
+}
+
+.set-text-large {
+    font-size: 18px!important
+}
+
+.set-text-xlarge {
+    font-size: 24px!important
+}
+
+.set-text-xxlarge {
+    font-size: 36px!important
+}
+
+.set-text-xxxlarge {
+    font-size: 48px!important
+}
+
+.set-text-jumbo {
+    font-size: 64px!important
+}
+
+.text-red,
+.hover-text-red:hover {
+    color: #f44336!important
+}
+
+.red,
+.hover-red:hover {
+    color: #fff!important;
+    background-color: #f44336!important
+}
+
+.text-yellow,
+.hover-text-yellow:hover {
+    color: #d2be0e!important
+}
+
+.yellow,
+.hover-yellow:hover {
+    color: #000!important;
+    background-color: #ffeb3b!important
+}
+
+.pale-red,
+.hover-pale-red:hover {
+    color: #000!important;
+    background-color: #ffdddd!important
+}
+
+.pale-green,
+.hover-pale-green:hover {
+    color: #000!important;
+    background-color: #ddffdd!important
+}
+
+.pale-yellow,
+.hover-pale-yellow:hover {
+    color: #000!important;
+    background-color: #ffffcc!important
+}
+
+.pale-blue,
+.hover-pale-blue:hover {
+    color: #000!important;
+    background-color: #ddffff!important
+}
+
+.gen-box-shadow {
+    box-shadow: 5px 10px 10px black;
+}
