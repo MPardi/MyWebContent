@@ -2,6 +2,10 @@
     margin: 16px!important
 }
 
+.set-margin-4 {
+    margin: 4px!important
+}
+
 .set-margin-top {
     margin-top: 16px!important
 }
@@ -96,6 +100,10 @@
     color: #f44336!important
 }
 
+.red-compliment {
+    background-color: rgba(54, 244, 104, 0.5);
+}
+
 .red,
 .hover-red:hover {
     color: #fff!important;
@@ -152,6 +160,50 @@
     background-color: #f2552c
 }
 
+.palette-red-bkg {
+    background-color: rgba(198, 42, 40, 1);
+}
+
+.palette-red-txt {
+    color: rgba(198, 42, 40, 1);
+}
+
+.palette-blue-bkg {
+    background-color: rgba(77, 157, 224, 1);
+}
+
+.palette-blue-txt {
+    color: rgba(77, 157, 224, 1);
+}
+
+.palette-yellow-bkg {
+    background-color: rgba(225, 188, 41, 1);
+}
+
+.palette-yellow-txt {
+    color: rgba(225, 188, 41, 1);
+}
+
+.palette-green-bkg {
+    background-color: rgba(59, 178, 115, 1);
+}
+
+.palette-green-txt {
+    color: rgba(59, 178, 115, 1);
+}
+
+.palette-violet-bkg {
+    background-color: rgba(119, 104, 174, 1);
+}
+
+.palette-violet-txt {
+    color: rgba(119, 104, 174, 1);
+}
+
 .gen-box-shadow {
-    box-shadow: 10px 10px 5px black;
+    /*    box-shadow: 10px 10px 5px black;*/
+    /*    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+    -webkit-box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.4);
 }

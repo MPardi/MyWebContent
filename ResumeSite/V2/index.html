@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Resume - Michael Thomas Pardi</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins|Raleway|Roboto" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .sidebar {
+            height: 100%;
+            /* Full-height: remove this if you want "auto" height */
+            width: 400px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            /*            background-color: #f44336;*/
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+        
+        .main-content {
+            margin-left: 400px;
+            padding: 20px 10px 0px 10px;
+        }
+        
+        .modal-closer:hover {
+            color: #f44336;
+        }
+        
+        .card-test {
+            background: #fff;
+            border-radius: 2px;
+            display: inline-block;
+            height: 300px;
+            margin: 1rem;
+            position: relative;
+            width: 300px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card set-margin-top set-margin-bottom gen-box-shadow red">
+                    <div class="card-body">
+                        <h1 class="text-center sidebar-title card-title" style="letter-spacing: 20px;">Michael<br>Thomas<br>Pardi</h1>
+                        <div class="text-center" style="margin: 25px 0;">
+                            <img class="img-thumbnail rounded-circle profile-img" src="img/person.svg" style="width: 150px; height: auto;">
+                        </div>
+
+                        <div class="text-white set-padding-small set-margin-4 rounded border border-dark palette-green-bkg gen-box-shadow">
+                            <div class="container">
+                                <p><i class="palette-yellow-txt set-margin-top fa fa-briefcase fa-fw fa-lg set-margin-right set-text-large"></i>Web Developer</p>
+                                <p><i class="palette-yellow-txt fa fa-home fa-fw fa-lg set-margin-right set-text-large"></i>Phoenix, Arizona</p>
+                                <p><i class="palette-yellow-txt fa fa-envelope fa-fw fa-lg set-margin-right set-text-large"></i>Michael_Pardi@outlook.com</p>
+                                <p><i class="palette-yellow-txt fa fa-phone fa-fw fa-lg set-margin-right set-text-large"></i>(602) 531 - 1154</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center set-margin-4 set-margin-top-lg">
+                            <a class="btn btn-lg btn-warning btn-block" href="https://github.com/MPardi" role="button" rel="noopener noreferrer" target="_blank"><i class="fa fa-github fa-lg"></i> GitHub</a>
+                        </div>
+
+                        <div class="text-dark set-margin-4 set-margin-top-lg">
+                            <form action="#">
+                                <p class="h4 text-center"><b>Send me a comment</b></p>
+                                <div class="form-group">
+                                    <label for="name">Name: </label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter your name...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email: </label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment">Comment:</label>
+                                    <textarea class="form-control" rows="7" id="comment" placeholder="Enter your comment..."></textarea>
+                                    <button class="set-margin-top btn btn-block btn-warning" data-toggle="modal" data-target="#submitted-modal" type="submit">
+                                <i class="fa fa-paper-plane fa-fw"></i> Submit</button>
+                                    <button class="set-margin-top btn btn-block btn-light" type="reset">
+                                <i class="fa fa-fast-backward fa-fw"></i> Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="card set-margin-top set-margin-bottom gen-box-shadow">
+                    <div class="card-body">
+                        <h3 class="card-title">Work Experience</h3>
+                        <div class="set-padding-small set-margin-4 rounded border border-dark pale-red gen-box-shadow">
+                            <div class="container">
+                                <h5>Test Job #1</h5>
+                                <div class="set-margin-left">
+                                    <p><i class="fa fa-calendar fa-fw set-margin-right"></i>January 2015 - Present</p>
+                                    <p>Officia lorem quorum mentitum varias, quem illustriora ingeniis anim aliquip. Quo fugiat anim et occaecat, aut varias doctrina singulis.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js" type="text/javascript"></script>
+</body>
+
+</html>
