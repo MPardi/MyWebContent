@@ -30,6 +30,10 @@
     padding: 4px 8px!important
 }
 
+.set-padding-smaller {
+    padding: 2px 4px!important
+}
+
 .set-padding {
     padding: 8px 16px!important
 }
